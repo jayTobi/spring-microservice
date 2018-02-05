@@ -1,0 +1,54 @@
+# for the most common app properties see:
+# https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#common-application-properties
+
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.github.jaytobi: DEBUG
+
+
+####################################
+# git versioned config 
+#server:
+#  port: 8888
+#spring:
+ # cloud:
+  #  config:
+   #   discovery:
+    #    enabled: true
+     # server:
+      #  encrypt.enabled: false
+       # git:
+      #    uri: https://git-repo
+       #   searchPaths: service1, service2, ...
+       #   username: user
+        #  password: yyy
+####
+# file-based solution for prototyping only, should be replaced with git
+####
+server:
+   port: 8888
+spring:
+  profiles:
+    active: native, dev, default
+  cloud:
+     config:
+       server:
+           native:
+              searchLocations: classpath:config/greetingservice #,classpath:config/anotherservice
+#configure eureka and ribbon
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+ribbon:
+    eureka:
+      enabled: true
+    # listOfServers: localhost:8090,localhost:9092,localhost:9999
+    ServerListRefreshInterval: 15000

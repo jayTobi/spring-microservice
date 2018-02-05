@@ -1,0 +1,9 @@
+# example properties using YAML format
+greeting:
+  friendly: "Hallo sir..."
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.github.jaytobi: DEBUG

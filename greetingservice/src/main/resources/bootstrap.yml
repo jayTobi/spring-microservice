@@ -1,0 +1,33 @@
+#spring:
+#  application:
+#    name: greetingservice
+#  profiles:
+#    active: dev  # normally this should be set by OS env var, e.g.  java -jar -Dspring.profiles.active=production greeting-service-1.0.0-SNAPSHOT.jar
+#  cloud:
+#    config:
+#      enabled: true
+#      uri: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: greetingservice
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: confserver
+      profile: dev
+
+
+#spring.cloud.config.name=rating-service
+#spring.cloud.config.discovery.service-id=config
+#spring.cloud.config.discovery.enabled=true
+#
+#eureka.client.serviceUrl.defaultZone=http://localhost:8082/eureka/
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    leaseRenewalIntervalInSeconds: 1
+#    leaseExpirationDurationInSeconds: 2
