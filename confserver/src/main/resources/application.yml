@@ -1,6 +1,13 @@
 # for the most common app properties see:
 # https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#common-application-properties
 
+# exposing actuator endpoints
+# https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/#production-ready-endpoints
+management:
+  endpoints:
+    web:
+      expose: env, metrics, loggers, monitor, mappings
+
 #Setting logging levels
 logging:
   level:
@@ -8,36 +15,33 @@ logging:
     org.springframework.web: WARN
     com.github.jaytobi: DEBUG
 
-
 ####################################
 # git versioned config 
-#server:
-#  port: 8888
-#spring:
- # cloud:
-  #  config:
-   #   discovery:
-    #    enabled: true
-     # server:
-      #  encrypt.enabled: false
-       # git:
-      #    uri: https://git-repo
-       #   searchPaths: service1, service2, ...
-       #   username: user
-        #  password: yyy
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      server:
+        encrypt.enabled: false
+        git:
+          uri: https://github.com/jayTobi/spring-cloud-config
+          searchPaths: greetingservice
 ####
 # file-based solution for prototyping only, should be replaced with git
 ####
-server:
-   port: 8888
-spring:
-  profiles:
-    active: native, dev, default
-  cloud:
-     config:
-       server:
-           native:
-              searchLocations: classpath:config/greetingservice #,classpath:config/anotherservice
+#server:
+#   port: 8888
+#spring:
+#  profiles:
+#    active: native, dev, default
+#  cloud:
+#     config:
+#       server:
+#           native:
+#              searchLocations: classpath:config/greetingservice #,classpath:config/anotherservice
 #configure eureka and ribbon
 eureka:
   instance:
