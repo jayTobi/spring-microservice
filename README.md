@@ -4,10 +4,10 @@ Example project using, Java, Kotlin, Spring, Spring Cloud to show possibilities 
 ## Setup
 ### Startup order
 Please start the modules in the following order:
-0. RabbitMQ server via Docker
-1. Eureka Server
-2. Config Server
-3. Greeting Service
+1. RabbitMQ server via Docker
+2. Eureka Server
+3. Config Server
+4. Greeting Service
 
 ## Submodule description
 Brief overview of the submodules in this project. 

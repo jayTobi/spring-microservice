@@ -6,7 +6,7 @@
 management:
   endpoints:
     web:
-      expose: env, metrics, loggers, monitor, mappings
+      expose: env, metrics, loggers, monitor, mappings, health, info
 
 #Setting logging levels
 logging:
