@@ -16,6 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/actuator/info", "/actuator/health").permitAll()
+                .antMatchers("/monitor").permitAll()
                 .antMatchers("/actuator/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()

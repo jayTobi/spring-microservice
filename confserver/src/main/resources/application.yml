@@ -27,8 +27,11 @@ spring:
       server:
         encrypt.enabled: false
         git:
-          uri: https://github.com/jayTobi/spring-cloud-config
+          # uri: https://github.com/jayTobi/spring-cloud-config
+          uri: file:/tmp/spring-cloud-config/
           searchPaths: greetingservice
+          # pattern matching and multiple repos are also possible,
+          # see https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_server.html#_pattern_matching_and_multiple_repositories
 ####
 # file-based solution for prototyping only, should be replaced with git
 ####
