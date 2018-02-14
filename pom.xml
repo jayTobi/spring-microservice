@@ -12,6 +12,7 @@
         <module>confserver</module>
         <module>eurekaserver</module>
         <module>greetingservice</module>
+        <module>accountingservice</module>
     </modules>
 
     <parent>
