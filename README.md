@@ -8,6 +8,7 @@ Please start the modules in the following order:
 2. Eureka Server
 3. Config Server
 4. Greeting Service
+5. Accounting Service
 
 ## Submodule description
 Brief overview of the submodules in this project. 
@@ -36,3 +37,6 @@ See: https://github.com/Netflix/eureka
 
 ### greetingservice
 Simple microservice using spring cloud config and config server discovery with eureka.
+
+### accountingservice
+A service demonstrating advanced Spring Security concepts.
