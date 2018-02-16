@@ -79,7 +79,49 @@ Support for testing with Spring security.
 For more details and more modules 
 see: https://docs.spring.io/spring-security/site/docs/5.0.1.RELEASE/reference/htmlsingle/#modules
 
+## Keycloak definitions 
+### Groups vs. Roles
+In the IT world the concepts of Group and Role are often blurred and interchangeable. 
+In Keycloak, Groups are just a collection of users that you can apply roles and attributes to in 
+one place. Roles define a type of user and applications assign permission and access control to roles.
 
+Aren’t Composite Roles also similar to Groups? Logically they provide 
+the same exact functionality, but the difference is conceptual. Composite roles should be used to 
+apply the permission model to your set of services and applications. Groups should focus on collections of users and their roles in your organization. 
+
+**Use groups to manage users. Use composite roles to manage applications and services.**
+
+# Getting started
+## Keycloak Docker image 
+To start a Keycloak instance in Docker for testing purpose you can run the following command
+and access the Keycloak Admin Console in your browser http://localhost:8900/
+  
+`docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin  -p 8900:8080 jboss/keycloak`
+
+## Keycloak Configuration
+Getting the Keycloak configuration right can be quite challenging because of the nearly endless possibilities.
+A good starting point for REST services is to use resources, scopes, permission, policies and roles as follows:
+
+1. Go to your web browser and open the admin console and login with admin/admin
+2. Create a dedicated realm named "spring-microservice"
+3. Create a new client, e.g. "accounting" for the accounting microservice 
+4. Select the accounting client and enable authorization on client settings page
+5. Click on the "Roles" tab (on the right tab-menu, not the left menu) and create a role, e.g. "READ_ONLY" for this client
+6. After saving a new Authorization tab appears - click on it
+7. Go to "Authorization Scopes" tab and add your needed HTTP verbs as scopes, e.g. GET, PUT, POST, DELETE
+8. Go to "Resources" tab and add a resource for all your REST (resource) endpoints, e.g. /accounting in the example
+9. Click on the newly created resource and add all required (authorization) scopes
+10. Go to "Policy" tab and create a "Role Policy" - select a (client) role, e.g. the created "READ_ONLY"
+11. Go to "Permissions" tab and create a "Scope based" permission: provide a name e.g. "accounting_read_permission", select the "accounting" resource
+add a scope ("GET") and apply policy "READ_ONLY" and save the settings
+12. Click on "Users" (left menu) and select a user or create a new
+13. After clicking on a user, select "Role Mappings" and then e.g. 
+"Client Roles" for "accounting" and assign "Read_Only" role 
+14. To check the permission go to "Clients: accounting" -> Authorization -> Evaluate:
+Select a client, a user and a resource - don't forget to click add - and then click on evaluate.
+Now you see which scopes on the resource are permitted or denied and which policy was responsible for the decision.
+ 
+## Integrate
  
 #### Links
 1. https://projects.spring.io/spring-security/

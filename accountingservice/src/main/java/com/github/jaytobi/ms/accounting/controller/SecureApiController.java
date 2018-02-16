@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@RequestMapping("/api/accounting")
+@RequestMapping("/api/v1/accounting")
 @RestController
 public class SecureApiController {
 

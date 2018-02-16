@@ -13,6 +13,7 @@
         <module>eurekaserver</module>
         <module>greetingservice</module>
         <module>customerservice</module>
+        <module>accountingservice</module>
     </modules>
 
     <parent>
