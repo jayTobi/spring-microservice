@@ -121,7 +121,13 @@ add a scope ("GET") and apply policy "READ_ONLY" and save the settings
 Select a client, a user and a resource - don't forget to click add - and then click on evaluate.
 Now you see which scopes on the resource are permitted or denied and which policy was responsible for the decision.
  
-## Integrate
+## Integrate Keycloak into Spring Boot + Spring Security
+Add the maven dependencies as described here 
+http://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_boot_adapter
+
+To get the correct client secret login to the admin console, select the accounting client and copy the secret from the "Credentials" tab into your configuration. 
+
+
  
 #### Links
 1. https://projects.spring.io/spring-security/

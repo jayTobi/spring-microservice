@@ -1,0 +1,9 @@
+# for testing we use a local configuration not the git / config server version
+keycloak:
+  realm: spring-microservice
+  auth-server-url: http://127.0.0.1:8900/auth
+  ssl-required: external
+  resource: accounting
+  credentials:
+    secret: f6d93203-1f47-4429-a65b-a62014022990
+  use-resource-role-mappings: true
